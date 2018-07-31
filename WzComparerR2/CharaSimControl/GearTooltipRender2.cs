@@ -599,8 +599,8 @@ namespace WzComparerR2.CharaSimControl
                     g.DrawImage(res["dotline"].Image, 0, picH);
                     picH += 8;
                 }
-                g.DrawImage(GetAdditionalOptionIcon(Gear.Grade), 8, picH - 1);
-                g.DrawString("潜在属性", GearGraphics.ItemDetailFont, GearGraphics.GetPotentialTextBrush(Gear.Grade), 26, picH);
+                g.DrawImage(GetAdditionalOptionIcon(Gear.Grade), 9, picH - 1);
+                g.DrawString("潜在属性", GearGraphics.ItemDetailFont, GearGraphics.GetPotentialTextBrush(Gear.Grade), 25, picH);
                 picH += 17;
                 foreach (Potential potential in Gear.Options)
                 {
@@ -659,7 +659,9 @@ namespace WzComparerR2.CharaSimControl
             GearPropType[] descTypes = new GearPropType[]{
                 GearPropType.tradeAvailable,
                 GearPropType.accountShareTag,
-                GearPropType.jokerToSetItem };
+                GearPropType.jokerToSetItem,
+                GearPropType.colorvar,
+            };
             foreach (GearPropType type in descTypes)
             {
                 if (Gear.Props.TryGetValue(type, out value) && value != 0)
@@ -1355,12 +1357,12 @@ namespace WzComparerR2.CharaSimControl
         {
             switch (grade)
             {
+                default:
                 case GearGrade.B: return Resource.AdditionalOptionTooltip_rare;
                 case GearGrade.A: return Resource.AdditionalOptionTooltip_epic;
                 case GearGrade.S: return Resource.AdditionalOptionTooltip_unique;
                 case GearGrade.SS: return Resource.AdditionalOptionTooltip_legendary;
             }
-            return null;
         }
 
         private bool TryGetMedalResource(int medalTag, out Wz_Node resNode)

@@ -69,10 +69,10 @@ namespace WzComparerR2.CharaSim
                 case GearPropType.incLUK: return "运气 : " + sign + value;
                 case GearPropType.incLUKr: return "运气 : " + sign + value + "%";
                 case GearPropType.incAllStat: return "所有属性 : " + sign + value;
-                case GearPropType.incMHP: return "最大HP : " + sign + value;
-                case GearPropType.incMHPr: return "最大HP : " + sign + value + "%";
-                case GearPropType.incMMP: return "最大MP : " + sign + value;
-                case GearPropType.incMMPr: return "最大MP : " + sign + value + "%";
+                case GearPropType.incMHP: return "最大血量： " + sign + value;
+                case GearPropType.incMHPr: return "最大血量： " + sign + value + "%";
+                case GearPropType.incMMP: return "最大魔量： " + sign + value;
+                case GearPropType.incMMPr: return "最大魔量： " + sign + value + "%";
                 case GearPropType.incMDF: return "MaxDF : " + sign + value;
                 case GearPropType.incPAD: return "攻击力 : " + sign + value;
                 case GearPropType.incPADr: return "攻击力 : " + sign + value + "%";
@@ -95,8 +95,9 @@ namespace WzComparerR2.CharaSim
                 case GearPropType.knockback: return "直接攻击时" + value + "的比率发生后退现象。";
                 case GearPropType.incPVPDamage: return "大乱斗时追加攻击力" + sign + value;
                 case GearPropType.incPQEXPr: return "组队任务经验值增加" + value + "%";
+                case GearPropType.incEXPr: return "经验值增加" + value + "%";
                 case GearPropType.incBDR:
-                case GearPropType.bdR: return "攻击BOSS怪物时，伤害+" + value + "%";
+                case GearPropType.bdR: return "攻击首领怪时，伤害+" + value + "%";
                 case GearPropType.incIMDR:
                 case GearPropType.imdR: return "无视怪物防御率：+" + value + "%";
                 case GearPropType.limitBreak: return "伤害上限突破至" + value + "。";
@@ -129,9 +130,10 @@ namespace WzComparerR2.CharaSim
                 case GearPropType.jokerToSetItem: return value == 0 ? null : " #c当前装备3个以上的所有套装道具中包含的幸运物品！#";
                 case GearPropType.abilityTimeLimited: return value == 0 ? null : "限期能力值";
                 case GearPropType.blockGoldHammer: return value == 0 ? null : "无法使用黄金锤";
+                case GearPropType.colorvar: return value == 0 ? null : "#c该装备可通过染色颜料来变更颜色.#";
 
-                case GearPropType.incMHP_incMMP: return "最大HP/最大MP：" + sign + value;
-                case GearPropType.incMHPr_incMMPr: return "最大HP/最大MP：" + sign + value + "%";
+                case GearPropType.incMHP_incMMP: return "最大血量/最大魔量：" + sign + value;
+                case GearPropType.incMHPr_incMMPr: return "最大血量/最大魔量：" + sign + value + "%";
                 case GearPropType.incPAD_incMAD: return "攻击力/魔力：" + sign + value;
                 case GearPropType.incPDD_incMDD: return "物理/魔法防御力：" + sign + value;
                 case GearPropType.incACC_incEVA: return "命中值/回避值：" + sign + value;
@@ -497,6 +499,8 @@ namespace WzComparerR2.CharaSim
                     return value == 0 ? null : "任务道具";
                 case ItemPropType.pquest:
                     return value == 0 ? null : "组队任务道具";
+                case ItemPropType.permanent:
+                    return value == 0 ? null : "可以一直使用魔法的神奇宠物。";
                 default:
                     return null;
             }
